@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ShotgunShoot.ogg-312d30e074006bd8f1677f7ce693b944.oggstr"
+
+[deps]
+
+source_file="res://Sounds/Weapons/ShotgunShoot.ogg"
+dest_files=[ "res://.import/ShotgunShoot.ogg-312d30e074006bd8f1677f7ce693b944.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

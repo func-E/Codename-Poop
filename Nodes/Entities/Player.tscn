@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Art Assets/Player/PlayerSprite.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
+[ext_resource path="res://Nodes/UI/Game_UI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Nodes/Items/DualUzis.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Nodes/Items/Pistol.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Nodes/Items/Shotgun.tscn" type="PackedScene" id=8]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 40.0
+
+[node name="Player" type="KinematicBody2D"]
+z_index = 2
+script = ExtResource( 2 )
+weaponsList = [ false, false, true ]
+
+[node name="PlayerCollider" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="PlayerSprite" type="Sprite" parent="."]
+scale = Vector2( 0.36, 0.36 )
+texture = ExtResource( 1 )
+region_rect = Rect2( -271.921, -25.6053, 756.711, 532.895 )
+
+[node name="Pistol" parent="PlayerSprite" instance=ExtResource( 7 )]
+visible = false
+position = Vector2( 100, 0 )
+z_index = -1
+
+[node name="DualUzis" parent="PlayerSprite" instance=ExtResource( 6 )]
+visible = false
+position = Vector2( 100, 0 )
+z_index = -1
+
+[node name="Shotgun" parent="PlayerSprite" instance=ExtResource( 8 )]
+visible = false
+
+[node name="PlayerCamera" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 1.5, 1.5 )
+
+[node name="Game_UI" parent="PlayerCamera" instance=ExtResource( 3 )]
+[connection signal="updateAmmo" from="." to="PlayerCamera/Game_UI" method="_on_Player_updateAmmo"]
+[connection signal="updateHealth" from="." to="PlayerCamera/Game_UI" method="_on_Player_updateHealth"]

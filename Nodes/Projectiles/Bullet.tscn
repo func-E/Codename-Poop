@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/Bullet.gd" type="Script" id=1]
+[ext_resource path="res://Art Assets/Projectiles/bulletWhite.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 15, 5 )
+
+[node name="Bullet" type="Area2D"]
+gravity_vec = Vector2( 0, 0 )
+gravity = 0.0
+script = ExtResource( 1 )
+
+[node name="bulletCollider" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="bulletSprite" type="Sprite" parent="."]
+scale = Vector2( 10, 10 )
+texture = ExtResource( 2 )
+[connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
