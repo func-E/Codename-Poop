@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/UziShoot.ogg-a412fa4ed3d78711a464d2007361a8ca.oggstr"
+
+[deps]
+
+source_file="res://Sounds/Weapons/UziShoot.ogg"
+dest_files=[ "res://.import/UziShoot.ogg-a412fa4ed3d78711a464d2007361a8ca.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
