@@ -15,15 +15,16 @@ signal updateAmmo(new_ammo)
 func _ready():
 	Update_Inventory()
 
-
 export var maxSpeed = 40000
 export var playerAcceleration = 0.15
 var velocity = Vector2(0,0)
 
 export var cameraLag = 40
-export var cameraSpeed = 0.2
+export var cameraSpeed = 0.1
 export var cameraRange = 0.1
 export var aimSnapiness = 0.5
+
+export var controllerDeadzone = 0.1
 
 func _process(delta):
 	#movement
@@ -40,18 +41,35 @@ func _process(delta):
 	velocity = lerp(velocity, target_move_vec, playerAcceleration)
 	move_and_slide(velocity * maxSpeed * delta)
 	
+	
 	#looking and camera stuff
-	$PlayerCamera.position = lerp($PlayerCamera.position, get_global_mouse_position() * cameraRange + -velocity * cameraLag, cameraSpeed) #moving the camera around so you can see farther in the direction you're pointing
-	$PlayerSprite.rotation = lerp_angle($PlayerSprite.rotation, get_local_mouse_position().angle(), aimSnapiness) #rotating the player to face the mouse pointer
+	var right_stick_pos = Vector2.ZERO
+	if Vector2(Input.get_joy_axis(0,2), Input.get_joy_axis(0,3)).distance_to(Vector2.ZERO) > controllerDeadzone:
+		right_stick_pos = Vector2(Input.get_joy_axis(0,2), Input.get_joy_axis(0,3))
+	var target_pos : Vector2
+	if right_stick_pos != Vector2.ZERO:
+		mouse_look = false
+	if mouse_look:
+		target_pos = get_local_mouse_position()
+	else:
+		target_pos = right_stick_pos * 900
+	
+	$PlayerCamera.position = lerp($PlayerCamera.position, target_pos * cameraRange + -velocity * cameraLag, cameraSpeed) #moving the camera around so you can see farther in the direction you're pointing
+	if target_pos != Vector2.ZERO:
+		$PlayerSprite.rotation = lerp_angle($PlayerSprite.rotation, target_pos.angle(), aimSnapiness) #rotating the player to face the mouse pointer
+	
+	
 	
 	if Input.is_action_pressed("Fire") and inventory != []:
 		get_node("PlayerSprite").get_node(inventory[selectedSlot]).Shoot()
 
-func _physics_process(delta):
-	
-	pass
+
+var mouse_look = true
 
 func _input(event):
+	#switching to mouse look mode
+	if event is InputEventMouseMotion:
+		mouse_look = true
 	#scrolling through the inventory
 	if (Input.is_action_just_pressed("nextWeapon") or (event is InputEventMouseButton and event.is_pressed() and event.button_index == BUTTON_WHEEL_DOWN)) and inventory != []:
 		selectedSlot += 1

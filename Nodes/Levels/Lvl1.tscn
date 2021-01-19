@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://TileMaps/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Nodes/Entities/Player.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Nodes/PickUps/SmallAmmo.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Nodes/PickUps/SmallHealth.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Nodes/PickUps/PistolPickUp.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Nodes/PickUps/UzisPickUp.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Nodes/Entities/PistolEnemy.tscn" type="PackedScene" id=9]
 
 [node name="Lvl1" type="TileMap"]
 tile_set = ExtResource( 1 )
@@ -58,3 +60,9 @@ position = Vector2( 288.303, 1034.42 )
 
 [node name="PistolPickUp" parent="." instance=ExtResource( 7 )]
 position = Vector2( 253.025, 66.8 )
+
+[node name="UzisPickUp" parent="." instance=ExtResource( 8 )]
+position = Vector2( 77.1714, -222.814 )
+
+[node name="PistolEnemy" parent="." instance=ExtResource( 9 )]
+position = Vector2( -655.392, -994.976 )

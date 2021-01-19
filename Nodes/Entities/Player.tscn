@@ -13,7 +13,7 @@ radius = 40.0
 [node name="Player" type="KinematicBody2D"]
 z_index = 2
 script = ExtResource( 2 )
-weaponsList = [ false, true, true ]
+weaponsList = [ false, false, true ]
 
 [node name="PlayerCollider" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
