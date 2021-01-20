@@ -7,5 +7,5 @@ func _on_UzisPickUp_body_entered(body):
 		body.Update_Inventory()
 		
 		if body.has_method("AddAmmo") and body.ammo < body.maxAmmo:
-			body.AddAmmo(20)
+			body.AddAmmo(50)
 		queue_free()

@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+onready var smallHealthPack = preload("res://Nodes/PickUps/SmallHealth.tscn")
+
 var can_path = true
 var can_attack = true
 export var enemyDamage = 2
@@ -48,8 +50,14 @@ func Damage(damage):
 	var damage_left = damage - health
 	health -= damage
 	if health < 1:
-		queue_free() #placeholder for dieing
+		Die()
 	return damage_left
+
+func Die():
+	var drop = smallHealthPack.instance()
+	drop.position = position
+	get_parent().add_child(drop)
+	queue_free()
 
 func PathToTarget(target):
 	if target and position.distance_to(target) > 60 and can_path:

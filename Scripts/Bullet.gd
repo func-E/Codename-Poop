@@ -8,7 +8,7 @@ export var damage = 1
 var prev_damage
 
 func _ready():
-	modulate = ColorCheck(damage)
+	$bulletParticle.modulate = ColorCheck(damage)
 
 func _physics_process(delta):
 	move_local_x(speed * delta)
