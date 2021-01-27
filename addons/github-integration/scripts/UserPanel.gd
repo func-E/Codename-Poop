@@ -1,8 +1,8 @@
 tool
 extends Control
 
-onready var RepositoryItem = preload("res://addons/github-integration/scenes/RepositoryItem.tscn")
-onready var GistItem = preload("res://addons/github-integration/scenes/GistItem.tscn")
+onready var _repository_item = preload("res://addons/github-integration/scenes/RepositoryItem.tscn")
+onready var _gist_item = preload("res://addons/github-integration/scenes/GistItem.tscn")
 
 onready var Avatar : TextureRect = $Panel/HBoxContainer/avatar
 onready var GistIcon : TextureRect = $Panel/List/GistHeader/gists_icon
@@ -81,7 +81,10 @@ func _on_request_failed(request_code : int, error_body : Dictionary) -> void:
 			get_parent().print_debug_message("ERROR "+str(request_code)+" : "+error_body.message)
 
 func _on_user_repositories_requested(body : Dictionary) -> void:
-	var repositories : Array = body.user.repositories.nodes
+	var repositories : Array = body.user.repositories.nodes 
+	if PluginSettings.owner_affiliations.has("ORGANIZATION_MEMBER"):
+		for organization in body.user.organizations.nodes:
+			repositories += organization.repositories.nodes
 	load_repositories(repositories)
 
 func _on_user_gists_requested(body : Dictionary) -> void:
@@ -113,7 +116,14 @@ func load_repositories(repositories : Array) -> void:
 	clear_repo_list()
 	
 	for repository in repositories:
-		var repo_item = RepositoryItem.instance()
+		var is_listed : bool = false
+		for repository_item in repository_list:
+			if repository_item.name == repository.name:
+				is_listed = true
+				continue
+		if is_listed:
+			continue
+		var repo_item = _repository_item.instance()
 		RepoList.add_child(repo_item)
 		repo_item.set_repository(repository)
 		repo_item.connect("repo_selected",self,"repo_selected")
@@ -129,7 +139,7 @@ func load_gists(gists : Array) -> void:
 	clear_gist_list()
 	
 	for gist in gists:
-		var gist_item = GistItem.instance()
+		var gist_item = _gist_item.instance()
 		GistList.add_child(gist_item)
 		gist_item.set_gist(gist)
 		gist_item.connect("gist_selected",self,"gist_selected")
@@ -161,7 +171,7 @@ func new_repo():
 	RepoDialog.popup()
 
 # Items clicked ...............................
-func repo_clicked(clicked_repo : PanelContainer):
+func repo_clicked(clicked_repo : RepositoryItem):
 	for repository in repository_list:
 		if repository!=clicked_repo:
 			repository.deselect()
@@ -172,7 +182,7 @@ func gist_clicked(clicked_gist : GistItem):
 			gist.deselect()
 
 # Items selected ...............................
-func repo_selected(repository : PanelContainer):
+func repo_selected(repository : RepositoryItem):
 	get_parent().print_debug_message("opening selected repository...")
 	get_parent().loading(true)
 	get_parent().Repo.open_repository(repository)

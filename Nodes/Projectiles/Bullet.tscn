@@ -6,20 +6,20 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 15, 5 )
 
-[sub_resource type="Curve" id=5]
+[sub_resource type="Curve" id=2]
 max_value = 100.0
 _data = [ Vector2( 0.40081, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 100 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=6]
-curve = SubResource( 5 )
-
-[sub_resource type="Curve" id=2]
-_data = [ Vector2( 0, 0.725 ), 0.0, 0.0, 0, 0, Vector2( 0.0404858, 0.997727 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="CurveTexture" id=3]
 curve = SubResource( 2 )
 
-[sub_resource type="ParticlesMaterial" id=4]
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 0.725 ), 0.0, 0.0, 0, 0, Vector2( 0.0404858, 0.997727 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
 flag_disable_z = true
 direction = Vector3( -1, 0, 0 )
 spread = 0.0
@@ -27,9 +27,9 @@ gravity = Vector3( 0, 0, 0 )
 initial_velocity = 100.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-damping_curve = SubResource( 6 )
+damping_curve = SubResource( 3 )
 scale = 12.0
-scale_curve = SubResource( 3 )
+scale_curve = SubResource( 5 )
 
 [node name="Bullet" type="Area2D"]
 gravity_vec = Vector2( 0, 0 )
@@ -43,11 +43,11 @@ shape = SubResource( 1 )
 amount = 32
 lifetime = 2.0
 speed_scale = 5.0
-process_material = SubResource( 4 )
+process_material = SubResource( 6 )
 texture = ExtResource( 2 )
 
 [node name="bulletSprite" type="Sprite" parent="."]
 modulate = Color( 0, 0, 0, 1 )
-scale = Vector2( 5, 5 )
+scale = Vector2( 5, 7 )
 texture = ExtResource( 2 )
 [connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]

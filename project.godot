@@ -39,7 +39,8 @@ _global_script_class_icons={
 [application]
 
 config/name="Poop"
-run/main_scene="res://Game.tscn"
+run/main_scene="res://Nodes/UI/MainMenu.tscn"
+config/use_custom_user_dir=true
 boot_splash/image="res://funcE_games.png"
 boot_splash/fullsize=false
 boot_splash/use_filter=false
@@ -52,6 +53,7 @@ PluginSettings="*res://addons/github-integration/scripts/PluginSettings.gd"
 IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
 UserData="*res://addons/github-integration/scripts/user_data.gd"
 RestHandler="*res://addons/github-integration/scenes/RestHandler.tscn"
+GameManager="*res://Scripts/GameManager.gd"
 
 [display]
 
