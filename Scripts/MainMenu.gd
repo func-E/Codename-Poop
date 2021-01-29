@@ -2,7 +2,7 @@ extends Control
 
 onready var Game = get_node("/root/GameManager")
 onready var Animations = $MenuAnimations
-onready var SaveNodePath = $PlayMenu/SaveFileContainer
+onready var SaveNodePath = $PlayMenu/PlayContainer/SaveFileContainer
 
 var loaded_data : Dictionary
 func _ready():
@@ -36,11 +36,20 @@ func _on_QuitButton_pressed():
 	get_tree().quit()
 
 
+
 #settings menu buttons
 func _on_SettingsBackButton_pressed():
 	SetSettingsMenu(false)
 	SetMainMenu(true)
 	Animations.play_backwards("MainToSettings")
+
+func _on_FullscreenButton_toggled(button_pressed):
+	OS.window_fullscreen = button_pressed
+	if button_pressed:
+		$SettingsMenu/SettingsContainer/Columns/VideoSettings/FullscreenButton.text = "Fullscreen: ON"
+	else:
+		$SettingsMenu/SettingsContainer/Columns/VideoSettings/FullscreenButton.text = "Fullscreen: OFF"
+
 
 
 #play menu buttons
@@ -55,18 +64,19 @@ func _on_Delete1Button_pressed():
 	ReloadMenuData()
 
 func _on_Load1Button_pressed():
-	Game.StartGame(Game.Load(1))
+	Game.StartGame(Game.Load(1), 1)
 
 
 
 #enabling and disabling the menus
 func SetMainMenu(value):
-	$MainButtonContainer/PlayButton.disabled = !value
-	$MainButtonContainer/SettingsButton.disabled = !value
-	$MainButtonContainer/QuitButton.disabled = !value
+	$TitleMenu/MainButtonContainer/PlayButton.disabled = !value
+	$TitleMenu/MainButtonContainer/SettingsButton.disabled = !value
+	$TitleMenu/MainButtonContainer/QuitButton.disabled = !value
 
 func SetSettingsMenu(value):
 	$SettingsMenu/SettingsBackButton.disabled = !value
+	$SettingsMenu/SettingsContainer/Columns/VideoSettings/FullscreenButton.disabled = !value
 
 func SetPlayMenu(value):
 	$PlayMenu/PlayBackButton.disabled = !value

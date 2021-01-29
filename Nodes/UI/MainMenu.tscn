@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Art Assets/UI/bliss16x9.jpg" type="Texture" id=2]
-[ext_resource path="res://Art Assets/Fonts/Gugi-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://FullFonts/ButtonFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Art Assets/UI/black_texture.png" type="Texture" id=4]
+[ext_resource path="res://FullFonts/TitleFont.tres" type="DynamicFont" id=5]
+[ext_resource path="res://FullFonts/SubtitleFont.tres" type="DynamicFont" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "MainToPlay"
@@ -49,14 +52,6 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.5 )
 }
 
-[sub_resource type="DynamicFont" id=3]
-size = 40
-font_data = ExtResource( 3 )
-
-[sub_resource type="DynamicFont" id=4]
-size = 30
-font_data = ExtResource( 3 )
-
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -80,8 +75,161 @@ anims/MainToSettings = SubResource( 2 )
 
 [node name="PlayMenu" type="Control" parent="."]
 anchor_left = 1.0
+anchor_top = -0.00138742
 anchor_right = 2.0
-anchor_bottom = 1.0
+anchor_bottom = 0.998613
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="PlayMenu"]
+anchor_left = 0.5
+anchor_top = 0.02
+anchor_right = 0.5
+anchor_bottom = 0.02
+margin_left = -200.0
+margin_right = 200.0
+margin_bottom = 50.0
+custom_fonts/font = ExtResource( 5 )
+text = "Load Game"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="PlayMenu"]
+self_modulate = Color( 1, 1, 1, 0.392157 )
+margin_left = 60.0
+margin_top = 90.0
+margin_right = 1860.0
+margin_bottom = 875.0
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayContainer" type="MarginContainer" parent="PlayMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -880.0
+margin_top = -430.0
+margin_right = 880.0
+margin_bottom = 315.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveFileContainer" type="VBoxContainer" parent="PlayMenu/PlayContainer"]
+margin_right = 1760.0
+margin_bottom = 745.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 60
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Save1" type="HBoxContainer" parent="PlayMenu/PlayContainer/SaveFileContainer"]
+margin_right = 1760.0
+margin_bottom = 745.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 50
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveText" type="VBoxContainer" parent="PlayMenu/PlayContainer/SaveFileContainer/Save1"]
+margin_right = 996.0
+margin_bottom = 745.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="SaveLabel" type="Label" parent="PlayMenu/PlayContainer/SaveFileContainer/Save1/SaveText"]
+margin_right = 996.0
+margin_bottom = 444.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+custom_fonts/font = ExtResource( 5 )
+text = "Save 1"
+valign = 1
+
+[node name="StatsContainer" type="HBoxContainer" parent="PlayMenu/PlayContainer/SaveFileContainer/Save1/SaveText"]
+margin_top = 448.0
+margin_right = 996.0
+margin_bottom = 745.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Level" type="Label" parent="PlayMenu/PlayContainer/SaveFileContainer/Save1/SaveText/StatsContainer"]
+margin_right = 246.0
+margin_bottom = 297.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 6 )
+text = "Stuff"
+align = 1
+valign = 1
+
+[node name="Health" type="Label" parent="PlayMenu/PlayContainer/SaveFileContainer/Save1/SaveText/StatsContainer"]
+margin_left = 250.0
+margin_right = 496.0
+margin_bottom = 297.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 6 )
+text = "Stuff"
+align = 1
+valign = 1
+
+[node name="Ammo" type="Label" parent="PlayMenu/PlayContainer/SaveFileContainer/Save1/SaveText/StatsContainer"]
+margin_left = 500.0
+margin_right = 746.0
+margin_bottom = 297.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 6 )
+text = "Stuff"
+align = 1
+valign = 1
+
+[node name="Weapons" type="Label" parent="PlayMenu/PlayContainer/SaveFileContainer/Save1/SaveText/StatsContainer"]
+margin_left = 750.0
+margin_right = 996.0
+margin_bottom = 297.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 6 )
+text = "Stuff"
+align = 1
+valign = 1
+
+[node name="Load1Button" type="Button" parent="PlayMenu/PlayContainer/SaveFileContainer/Save1"]
+margin_left = 1046.0
+margin_right = 1378.0
+margin_bottom = 745.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 3 )
+text = "Load"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Delete1Button" type="Button" parent="PlayMenu/PlayContainer/SaveFileContainer/Save1"]
+margin_left = 1428.0
+margin_right = 1760.0
+margin_bottom = 745.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 3 )
+text = "Delete"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -95,125 +243,36 @@ margin_left = -900.0
 margin_top = 350.0
 margin_right = -500.0
 margin_bottom = 500.0
+custom_fonts/font = ExtResource( 3 )
 text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SaveFileContainer" type="VBoxContainer" parent="PlayMenu"]
+[node name="TitleMenu" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="TitleMenu"]
+self_modulate = Color( 1, 1, 1, 0.392157 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -900.0
-margin_top = -300.0
-margin_right = 900.0
-margin_bottom = 300.0
-custom_constants/separation = 60
+margin_left = -270.0
+margin_top = -20.0
+margin_right = 270.0
+margin_bottom = 470.0
+texture = ExtResource( 4 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Save1" type="HBoxContainer" parent="PlayMenu/SaveFileContainer"]
-margin_right = 1800.0
-margin_bottom = 600.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/separation = 50
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="SaveText" type="VBoxContainer" parent="PlayMenu/SaveFileContainer/Save1"]
-margin_right = 1020.0
-margin_bottom = 600.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-size_flags_stretch_ratio = 3.0
-
-[node name="SaveLabel" type="Label" parent="PlayMenu/SaveFileContainer/Save1/SaveText"]
-margin_right = 1020.0
-margin_bottom = 357.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-size_flags_stretch_ratio = 1.5
-custom_fonts/font = SubResource( 3 )
-text = "Save 1"
-valign = 1
-
-[node name="StatsContainer" type="HBoxContainer" parent="PlayMenu/SaveFileContainer/Save1/SaveText"]
-margin_top = 361.0
-margin_right = 1020.0
-margin_bottom = 600.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Level" type="Label" parent="PlayMenu/SaveFileContainer/Save1/SaveText/StatsContainer"]
-margin_right = 252.0
-margin_bottom = 239.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = SubResource( 4 )
-text = "Stuff"
-align = 1
-valign = 1
-
-[node name="Health" type="Label" parent="PlayMenu/SaveFileContainer/Save1/SaveText/StatsContainer"]
-margin_left = 256.0
-margin_right = 508.0
-margin_bottom = 239.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = SubResource( 4 )
-text = "Stuff"
-align = 1
-valign = 1
-
-[node name="Ammo" type="Label" parent="PlayMenu/SaveFileContainer/Save1/SaveText/StatsContainer"]
-margin_left = 512.0
-margin_right = 764.0
-margin_bottom = 239.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = SubResource( 4 )
-text = "Stuff"
-align = 1
-valign = 1
-
-[node name="Weapons" type="Label" parent="PlayMenu/SaveFileContainer/Save1/SaveText/StatsContainer"]
-margin_left = 768.0
-margin_right = 1020.0
-margin_bottom = 239.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = SubResource( 4 )
-text = "Stuff"
-align = 1
-valign = 1
-
-[node name="Load1Button" type="Button" parent="PlayMenu/SaveFileContainer/Save1"]
-margin_left = 1070.0
-margin_right = 1410.0
-margin_bottom = 600.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "Load"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Delete1Button" type="Button" parent="PlayMenu/SaveFileContainer/Save1"]
-margin_left = 1460.0
-margin_right = 1800.0
-margin_bottom = 600.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "Delete"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MainButtonContainer" type="VBoxContainer" parent="."]
+[node name="MainButtonContainer" type="VBoxContainer" parent="TitleMenu"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -226,53 +285,184 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlayButton" type="Button" parent="MainButtonContainer"]
+[node name="PlayButton" type="Button" parent="TitleMenu/MainButtonContainer"]
 margin_right = 500.0
 margin_bottom = 136.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_fonts/font = ExtResource( 3 )
 text = "Play"
 
-[node name="SettingsButton" type="Button" parent="MainButtonContainer"]
+[node name="SettingsButton" type="Button" parent="TitleMenu/MainButtonContainer"]
 margin_top = 156.0
 margin_right = 500.0
 margin_bottom = 293.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_fonts/font = ExtResource( 3 )
 text = "Settings"
 
-[node name="QuitButton" type="Button" parent="MainButtonContainer"]
+[node name="QuitButton" type="Button" parent="TitleMenu/MainButtonContainer"]
 margin_top = 313.0
 margin_right = 500.0
 margin_bottom = 450.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_fonts/font = ExtResource( 3 )
 text = "Quit"
 
 [node name="SettingsMenu" type="Control" parent="."]
 anchor_left = -1.0
 anchor_bottom = 1.0
+
+[node name="Title" type="Label" parent="SettingsMenu"]
+anchor_left = 0.5
+anchor_top = 0.02
+anchor_right = 0.5
+anchor_bottom = 0.02
+margin_left = -100.0
+margin_right = 100.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+custom_fonts/font = ExtResource( 5 )
+text = "Settings"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SettingsBackButton" type="Button" parent="SettingsMenu"]
+[node name="Background" type="TextureRect" parent="SettingsMenu"]
+self_modulate = Color( 1, 1, 1, 0.392157 )
+margin_left = 60.0
+margin_top = 90.0
+margin_right = 1860.0
+margin_bottom = 890.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SettingsContainer" type="MarginContainer" parent="SettingsMenu"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -200.0
-margin_top = 150.0
-margin_right = 200.0
-margin_bottom = 300.0
+margin_left = -880.0
+margin_top = -430.0
+margin_right = 880.0
+margin_bottom = 330.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Columns" type="HBoxContainer" parent="SettingsMenu/SettingsContainer"]
+margin_right = 1760.0
+margin_bottom = 760.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VideoSettings" type="VBoxContainer" parent="SettingsMenu/SettingsContainer/Columns"]
+margin_right = 425.0
+margin_bottom = 760.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 20
+
+[node name="Title" type="Label" parent="SettingsMenu/SettingsContainer/Columns/VideoSettings"]
+margin_right = 425.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 6 )
+text = "Video"
+align = 1
+valign = 1
+
+[node name="FullscreenButton" type="Button" parent="SettingsMenu/SettingsContainer/Columns/VideoSettings"]
+margin_top = 51.0
+margin_right = 425.0
+margin_bottom = 760.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 3 )
+toggle_mode = true
+text = "Fullscreen: OFF"
+
+[node name="AudioSettings" type="VBoxContainer" parent="SettingsMenu/SettingsContainer/Columns"]
+margin_left = 445.0
+margin_right = 870.0
+margin_bottom = 760.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 20
+
+[node name="Title" type="Label" parent="SettingsMenu/SettingsContainer/Columns/AudioSettings"]
+margin_right = 425.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 6 )
+text = "Audio"
+align = 1
+valign = 1
+
+[node name="GameplaySettings" type="VBoxContainer" parent="SettingsMenu/SettingsContainer/Columns"]
+margin_left = 890.0
+margin_right = 1315.0
+margin_bottom = 760.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 20
+
+[node name="Title" type="Label" parent="SettingsMenu/SettingsContainer/Columns/GameplaySettings"]
+margin_right = 425.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 6 )
+text = "Gameplay"
+align = 1
+valign = 1
+
+[node name="Keybinds" type="VBoxContainer" parent="SettingsMenu/SettingsContainer/Columns"]
+margin_left = 1335.0
+margin_right = 1760.0
+margin_bottom = 760.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 20
+
+[node name="Title" type="Label" parent="SettingsMenu/SettingsContainer/Columns/Keybinds"]
+margin_right = 425.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 6 )
+text = "Keybinds"
+align = 1
+valign = 1
+
+[node name="SettingsBackButton" type="Button" parent="SettingsMenu"]
+anchor_left = 0.95
+anchor_top = 0.95
+anchor_right = 0.95
+anchor_bottom = 0.95
+margin_left = -300.0
+margin_top = -100.0
+custom_fonts/font = ExtResource( 3 )
 text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="pressed" from="PlayMenu/PlayContainer/SaveFileContainer/Save1/Load1Button" to="." method="_on_Load1Button_pressed"]
+[connection signal="pressed" from="PlayMenu/PlayContainer/SaveFileContainer/Save1/Delete1Button" to="." method="_on_Delete1Button_pressed"]
 [connection signal="pressed" from="PlayMenu/PlayBackButton" to="." method="_on_PlayBackButton_pressed"]
-[connection signal="pressed" from="PlayMenu/SaveFileContainer/Save1/Load1Button" to="." method="_on_Load1Button_pressed"]
-[connection signal="pressed" from="PlayMenu/SaveFileContainer/Save1/Delete1Button" to="." method="_on_Delete1Button_pressed"]
-[connection signal="pressed" from="MainButtonContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
-[connection signal="pressed" from="MainButtonContainer/SettingsButton" to="." method="_on_SettingsButton_pressed"]
-[connection signal="pressed" from="MainButtonContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="TitleMenu/MainButtonContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="TitleMenu/MainButtonContainer/SettingsButton" to="." method="_on_SettingsButton_pressed"]
+[connection signal="pressed" from="TitleMenu/MainButtonContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="toggled" from="SettingsMenu/SettingsContainer/Columns/VideoSettings/FullscreenButton" to="." method="_on_FullscreenButton_toggled"]
 [connection signal="pressed" from="SettingsMenu/SettingsBackButton" to="." method="_on_SettingsBackButton_pressed"]

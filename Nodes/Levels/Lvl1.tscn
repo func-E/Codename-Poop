@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://TileMaps/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Nodes/Entities/Player.tscn" type="PackedScene" id=2]
@@ -10,8 +10,10 @@
 [ext_resource path="res://Nodes/PickUps/UzisPickUp.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Nodes/Entities/PistolEnemy.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Nodes/PickUps/ShotgunPickUp.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scripts/LevelStart.gd" type="Script" id=11]
 
 [node name="Lvl1" type="Navigation2D"]
+script = ExtResource( 11 )
 
 [node name="Lvl1Tiles" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )

@@ -1,5 +1,7 @@
 extends Node2D
 
+onready var main_menu = preload("res://Nodes/UI/MainMenu.tscn")
+
 const levels = {
 	"lvl1" : preload("res://Nodes/Levels/Lvl1.tscn")
 }
@@ -20,14 +22,22 @@ func Save(data : Dictionary, number : int):
 	else:
 		print(error)
 
-func StartGame(data : Dictionary):
+var current_game : int = 0
+func StartGame(data : Dictionary, number : int):
 	LoadItem(levels["lvl" + str(data["Level"])])
+	current_game = number
+	yield(get_tree().create_timer(0.1),"timeout") #this is a terrible solution and should be changed as soon as I figure out another way
+	get_parent().get_node("Lvl" + str(data["Level"])).SetPlayerState(data)
+
+func MainMenu():
+	LoadItem(main_menu)
+	current_game = 0
 
 const default_data = {
 	"Level" : 1,
 	"Health" : 20,
 	"Ammo" : 0,
-	"Weapons" : [],
+	"Weapons" : [false, false, false],
 	"Abilities" : []
 }
 
@@ -46,4 +56,15 @@ func Load(number : int):
 		print("File does not exist.\nCreating a new file.")
 		Save(default_data,number)
 		return default_data
-	
+
+
+#settings data
+var settings_data = {
+	"Fullscreen" : false
+}
+
+func LoadSettings():
+	pass
+
+func SaveSettings():
+	pass

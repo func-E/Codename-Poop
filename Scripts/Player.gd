@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 export var weaponsList = 	[false, 	false,  	false]
-						#pistol,	dualUzis, 	shotgun
+							#pistol,	dualUzis, 	shotgun
 var inventory = []
 var selectedSlot = 0
 
