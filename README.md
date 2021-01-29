@@ -1,3 +1,5 @@
+This is for the plugin I'm using, not the project itself.
+
 <p align="right">
 <a href="https://discord.gg/KnJGY9S">
   <img src="https://github.com/fenix-hub/ColoredBadges/blob/master/svg/social/discord.svg" alt="react" style="vertical-align:top; margin:6px 4px">
