@@ -7,9 +7,12 @@
 - [Added] weapons and abilities stats on the save game screen
 - [Added] enemies can now sense the player when it is close
 - [Added] enemies will now react when shot at
+- [Improved] the pistol now deals +50% more damage
+- [Improved] the uzis now deal +100% more damage
 
  *Bugs*
 - [Fixed] when you die and respawn you no longer keep your weapons (#1)
+- [Fixed] health and ammo now update to show the correct values when you start a level (#2)
 
 --------------------------------------------------------------------------------------
 
