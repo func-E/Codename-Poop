@@ -1,0 +1,219 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://FullFonts/TitleFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://FullFonts/ButtonFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Art Assets/UI/black_texture.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/DeathMenu.gd" type="Script" id=4]
+
+[sub_resource type="Animation" id=2]
+resource_name = "DeathMenuFadeIn"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Background:self_modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0.156863, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.4 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Background/MenuBackground:self_modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0.392157, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Background/MenuContainer/StuffContainer/Title:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Background/MenuContainer/StuffContainer/ButtonsContainer/MainMenuButton:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Background/MenuContainer/StuffContainer/ButtonsContainer/RestartButton:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "CompleteMenuFadeIn"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Background:self_modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0.156863, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.4 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Background/MenuBackground:self_modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0.392157, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Background/MenuContainer/StuffContainer/Title:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Background/MenuContainer/StuffContainer/ButtonsContainer/MainMenuButton:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Background/MenuContainer/StuffContainer/ButtonsContainer/ContinueButton:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="DeathMenu" type="CanvasLayer"]
+pause_mode = 2
+script = ExtResource( 4 )
+
+[node name="Background" type="TextureRect" parent="."]
+self_modulate = Color( 1, 1, 1, 0.144977 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuBackground" type="TextureRect" parent="Background"]
+self_modulate = Color( 1, 1, 1, 0.392157 )
+margin_left = 540.0
+margin_top = 120.0
+margin_right = 1380.0
+margin_bottom = 960.0
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuContainer" type="MarginContainer" parent="Background"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -400.0
+margin_top = -400.0
+margin_right = 400.0
+margin_bottom = 400.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StuffContainer" type="VBoxContainer" parent="Background/MenuContainer"]
+margin_right = 800.0
+margin_bottom = 800.0
+custom_constants/separation = 20
+
+[node name="Title" type="Label" parent="Background/MenuContainer/StuffContainer"]
+margin_right = 800.0
+margin_bottom = 41.0
+custom_fonts/font = ExtResource( 1 )
+text = "You Died!"
+align = 1
+valign = 1
+
+[node name="StatsContainer" type="MarginContainer" parent="Background/MenuContainer/StuffContainer"]
+margin_top = 61.0
+margin_right = 800.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="StatsList" type="VBoxContainer" parent="Background/MenuContainer/StuffContainer/StatsContainer"]
+margin_right = 800.0
+margin_bottom = 539.0
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="Background/MenuContainer/StuffContainer"]
+margin_top = 620.0
+margin_right = 800.0
+margin_bottom = 800.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 20
+
+[node name="MainMenuButton" type="Button" parent="Background/MenuContainer/StuffContainer/ButtonsContainer"]
+margin_right = 390.0
+margin_bottom = 180.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Main Menu"
+
+[node name="RestartButton" type="Button" parent="Background/MenuContainer/StuffContainer/ButtonsContainer"]
+margin_left = 410.0
+margin_right = 800.0
+margin_bottom = 180.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Restart"
+
+[node name="Animations" type="AnimationPlayer" parent="."]
+anims/DeathMenuFadeIn = SubResource( 2 )
+anims/MenuFadeIn = SubResource( 1 )
+[connection signal="pressed" from="Background/MenuContainer/StuffContainer/ButtonsContainer/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
+[connection signal="pressed" from="Background/MenuContainer/StuffContainer/ButtonsContainer/RestartButton" to="." method="_on_RestartButton_pressed"]

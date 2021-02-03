@@ -15,6 +15,7 @@ func Shoot():
 		get_parent().get_parent().ConsumeAmmo(ammoPerShot)
 		for i in range(-spread,spread+1,spread/2):
 			var bullet_inst = bullet.instance()
+			bullet_inst.Owner = get_parent().get_parent()
 			bullet_inst.damage = damage
 			bullet_inst.position = get_parent().get_global_position() + Vector2(spawnDistance,0).rotated(get_parent().rotation + deg2rad(i))
 			bullet_inst.rotation_degrees = get_parent().rotation_degrees + i

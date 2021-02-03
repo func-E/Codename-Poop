@@ -6,3 +6,5 @@ func SetPlayerState(data : Dictionary):
 	Player.ammo = data["Ammo"]
 	Player.weaponsList = data["Weapons"]
 	Player.Update_Inventory()
+	Player.emit_signal("updateHealth", Player.health)
+	Player.emit_signal("updateAmmo", Player.ammo)

@@ -6,7 +6,7 @@ var right_gun = true
 export var ammoPerShot = 1
 export var shootDelay = 0.05
 export var spread = 9
-export var damage = 1
+export var damage = 2
 
 func Shoot():
 	if can_shoot and get_parent().get_parent().ammo >= ammoPerShot:
@@ -15,6 +15,7 @@ func Shoot():
 		get_parent().get_parent().ConsumeAmmo(ammoPerShot)
 		var bullet_inst = bullet.instance()
 		bullet_inst.damage = damage
+		bullet_inst.Owner = get_parent().get_parent()
 		if right_gun:
 			bullet_inst.position = get_parent().get_global_position() + Vector2(80,36).rotated(get_parent().rotation)
 			right_gun = false

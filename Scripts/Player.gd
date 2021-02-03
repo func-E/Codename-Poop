@@ -111,15 +111,19 @@ func ConsumeAmmo(amount):
 	ammo = clamp(ammo,0,maxAmmo)
 	emit_signal("updateAmmo", ammo)
 
-func Damage(damage):
+func Damage(damage, dealer : Node):
 	var damage_left = damage - health
 	health -= damage
 	emit_signal("updateHealth", health)
 	if health < 1:
-		get_tree().reload_current_scene() #placeholder for dieing
+		Die()
 	return damage_left
 
 func Heal(amount):
 	health += amount
 	health = clamp(health, 0, maxHealth)
 	emit_signal("updateHealth", health)
+
+func Die():
+	$PlayerCamera/PauseMenu.enabled = false
+	$PlayerCamera/DeathMenu.Die()

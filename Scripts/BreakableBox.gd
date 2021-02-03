@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 export var health = 10
 
-func Damage(damage):
+func Damage(damage, dealer : Node):
 	var damage_left = damage - health
 	health -= damage
 	if health < 1:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Art Assets/UI/bliss16x9.jpg" type="Texture" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Art Assets/UI/black_texture.png" type="Texture" id=4]
 [ext_resource path="res://FullFonts/TitleFont.tres" type="DynamicFont" id=5]
 [ext_resource path="res://FullFonts/SubtitleFont.tres" type="DynamicFont" id=6]
+[ext_resource path="res://FullFonts/SmallTitleFont.tres" type="DynamicFont" id=7]
+[ext_resource path="res://icon.png" type="Texture" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "MainToPlay"
@@ -144,14 +146,14 @@ __meta__ = {
 }
 
 [node name="SaveText" type="VBoxContainer" parent="PlayMenu/PlayContainer/SaveFileContainer/Save1"]
-margin_right = 996.0
+margin_right = 805.0
 margin_bottom = 745.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
 
 [node name="SaveLabel" type="Label" parent="PlayMenu/PlayContainer/SaveFileContainer/Save1/SaveText"]
-margin_right = 996.0
+margin_right = 805.0
 margin_bottom = 444.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -162,13 +164,13 @@ valign = 1
 
 [node name="StatsContainer" type="HBoxContainer" parent="PlayMenu/PlayContainer/SaveFileContainer/Save1/SaveText"]
 margin_top = 448.0
-margin_right = 996.0
+margin_right = 805.0
 margin_bottom = 745.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Level" type="Label" parent="PlayMenu/PlayContainer/SaveFileContainer/Save1/SaveText/StatsContainer"]
-margin_right = 246.0
+margin_right = 265.0
 margin_bottom = 297.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -178,8 +180,8 @@ align = 1
 valign = 1
 
 [node name="Health" type="Label" parent="PlayMenu/PlayContainer/SaveFileContainer/Save1/SaveText/StatsContainer"]
-margin_left = 250.0
-margin_right = 496.0
+margin_left = 269.0
+margin_right = 535.0
 margin_bottom = 297.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -189,8 +191,8 @@ align = 1
 valign = 1
 
 [node name="Ammo" type="Label" parent="PlayMenu/PlayContainer/SaveFileContainer/Save1/SaveText/StatsContainer"]
-margin_left = 500.0
-margin_right = 746.0
+margin_left = 539.0
+margin_right = 805.0
 margin_bottom = 297.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -199,20 +201,98 @@ text = "Stuff"
 align = 1
 valign = 1
 
-[node name="Weapons" type="Label" parent="PlayMenu/PlayContainer/SaveFileContainer/Save1/SaveText/StatsContainer"]
-margin_left = 750.0
-margin_right = 996.0
-margin_bottom = 297.0
+[node name="ItemsContainer" type="VBoxContainer" parent="PlayMenu/PlayContainer/SaveFileContainer/Save1"]
+margin_left = 855.0
+margin_right = 1123.0
+margin_bottom = 745.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 6 )
-text = "Stuff"
-align = 1
+
+[node name="WeaponsLabel" type="Label" parent="PlayMenu/PlayContainer/SaveFileContainer/Save1/ItemsContainer"]
+margin_right = 268.0
+margin_bottom = 122.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+custom_fonts/font = ExtResource( 7 )
+text = "Weapons"
 valign = 1
+
+[node name="WeaponsContainer" type="HBoxContainer" parent="PlayMenu/PlayContainer/SaveFileContainer/Save1/ItemsContainer"]
+margin_top = 126.0
+margin_right = 268.0
+margin_bottom = 370.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PistolIcon" type="TextureRect" parent="PlayMenu/PlayContainer/SaveFileContainer/Save1/ItemsContainer/WeaponsContainer"]
+margin_right = 86.0
+margin_bottom = 244.0
+hint_tooltip = "Pistol"
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 8 )
+
+[node name="UzisIcon" type="TextureRect" parent="PlayMenu/PlayContainer/SaveFileContainer/Save1/ItemsContainer/WeaponsContainer"]
+margin_left = 90.0
+margin_right = 177.0
+margin_bottom = 244.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 8 )
+
+[node name="ShotgunIcon" type="TextureRect" parent="PlayMenu/PlayContainer/SaveFileContainer/Save1/ItemsContainer/WeaponsContainer"]
+margin_left = 181.0
+margin_right = 268.0
+margin_bottom = 244.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 8 )
+
+[node name="AbilitiesLabel" type="Label" parent="PlayMenu/PlayContainer/SaveFileContainer/Save1/ItemsContainer"]
+margin_top = 374.0
+margin_right = 268.0
+margin_bottom = 496.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+custom_fonts/font = ExtResource( 7 )
+text = "Abilities"
+valign = 1
+
+[node name="AbilitiesContainer" type="HBoxContainer" parent="PlayMenu/PlayContainer/SaveFileContainer/Save1/ItemsContainer"]
+margin_top = 500.0
+margin_right = 268.0
+margin_bottom = 745.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Ability1Icon" type="TextureRect" parent="PlayMenu/PlayContainer/SaveFileContainer/Save1/ItemsContainer/AbilitiesContainer"]
+margin_right = 86.0
+margin_bottom = 245.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 8 )
+
+[node name="Ability2Icon" type="TextureRect" parent="PlayMenu/PlayContainer/SaveFileContainer/Save1/ItemsContainer/AbilitiesContainer"]
+margin_left = 90.0
+margin_right = 177.0
+margin_bottom = 245.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 8 )
+
+[node name="Ability3Icon" type="TextureRect" parent="PlayMenu/PlayContainer/SaveFileContainer/Save1/ItemsContainer/AbilitiesContainer"]
+margin_left = 181.0
+margin_right = 268.0
+margin_bottom = 245.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 8 )
 
 [node name="Load1Button" type="Button" parent="PlayMenu/PlayContainer/SaveFileContainer/Save1"]
-margin_left = 1046.0
-margin_right = 1378.0
+margin_left = 1173.0
+margin_right = 1441.0
 margin_bottom = 745.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -223,7 +303,7 @@ __meta__ = {
 }
 
 [node name="Delete1Button" type="Button" parent="PlayMenu/PlayContainer/SaveFileContainer/Save1"]
-margin_left = 1428.0
+margin_left = 1491.0
 margin_right = 1760.0
 margin_bottom = 745.0
 size_flags_horizontal = 3

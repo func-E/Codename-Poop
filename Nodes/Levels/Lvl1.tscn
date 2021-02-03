@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://TileMaps/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Nodes/Entities/Player.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Nodes/Entities/PistolEnemy.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Nodes/PickUps/ShotgunPickUp.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scripts/LevelStart.gd" type="Script" id=11]
+[ext_resource path="res://Nodes/Objects/LevelGoal.tscn" type="PackedScene" id=12]
 
 [node name="Lvl1" type="Navigation2D"]
 script = ExtResource( 11 )
@@ -35,6 +36,7 @@ position = Vector2( 516.725, -436.016 )
 
 [node name="MeleeEnemy3" parent="Lvl1Tiles" instance=ExtResource( 4 )]
 position = Vector2( 1396.15, 556.803 )
+startingRotation = -90
 
 [node name="MeleeEnemy4" parent="Lvl1Tiles" instance=ExtResource( 4 )]
 position = Vector2( 1456.63, -103.396 )
@@ -71,3 +73,6 @@ position = Vector2( -655.392, -994.976 )
 
 [node name="ShotgunPickUp" parent="Lvl1Tiles" instance=ExtResource( 10 )]
 position = Vector2( 82.8282, 184.48 )
+
+[node name="LevelGoal" parent="Lvl1Tiles" instance=ExtResource( 12 )]
+position = Vector2( 1474.42, -966.691 )

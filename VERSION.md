@@ -1,3 +1,18 @@
+**Alpha v0.1.0**
+
+ *Features*
+- [Added] a proper death menu
+- [Added] a level complete menu
+- [Added] two new levels
+- [Added] weapons and abilities stats on the save game screen
+- [Added] enemies can now sense the player when it is close
+- [Added] enemies will now react when shot at
+
+ *Bugs*
+- [Fixed] when you die and respawn you no longer keep your weapons (#1)
+
+--------------------------------------------------------------------------------------
+
 **Pre-Alpha v0.0.4**
 
  *Features*

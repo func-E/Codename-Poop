@@ -7,6 +7,8 @@ export var damage = 1
 
 var prev_damage
 
+var Owner
+
 func _ready():
 	$bulletParticle.modulate = ColorCheck(damage)
 
@@ -19,7 +21,7 @@ func _physics_process(delta):
 func _on_Bullet_body_entered(body):
 	prev_damage = damage
 	if body.has_method("Damage"):
-		var temp_dmg = body.Damage(damage)
+		var temp_dmg = body.Damage(damage, self)
 		if temp_dmg < damage:
 			damage = temp_dmg
 	elif body.has_method("wallBang"):

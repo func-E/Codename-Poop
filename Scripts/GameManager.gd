@@ -3,7 +3,9 @@ extends Node2D
 onready var main_menu = preload("res://Nodes/UI/MainMenu.tscn")
 
 const levels = {
-	"lvl1" : preload("res://Nodes/Levels/Lvl1.tscn")
+	"lvl1" : preload("res://Nodes/Levels/Lvl1.tscn"),
+	"lvl2" : preload("res://Nodes/Levels/Lvl2.tscn"),
+	"lvl3" : preload("res://Nodes/Levels/Lvl3.tscn")
 }
 
 func LoadItem(item):
@@ -23,7 +25,8 @@ func Save(data : Dictionary, number : int):
 		print(error)
 
 var current_game : int = 0
-func StartGame(data : Dictionary, number : int):
+func StartGame(number : int):
+	var data = Load(number)
 	LoadItem(levels["lvl" + str(data["Level"])])
 	current_game = number
 	yield(get_tree().create_timer(0.1),"timeout") #this is a terrible solution and should be changed as soon as I figure out another way

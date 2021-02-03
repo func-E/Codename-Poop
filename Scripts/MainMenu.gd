@@ -1,6 +1,5 @@
 extends Control
 
-onready var Game = get_node("/root/GameManager")
 onready var Animations = $MenuAnimations
 onready var SaveNodePath = $PlayMenu/PlayContainer/SaveFileContainer
 
@@ -9,10 +8,11 @@ func _ready():
 	SetSettingsMenu(false)
 	SetPlayMenu(false)
 	ReloadMenuData()
+	get_tree().paused = false
 
 func ReloadMenuData():
 	for i in range(1,4):
-		loaded_data = Game.Load(i)
+		loaded_data = GameManager.Load(i)
 		ShowSaveData(loaded_data, i)
 
 func ShowSaveData(data : Dictionary, number : int):
@@ -20,6 +20,10 @@ func ShowSaveData(data : Dictionary, number : int):
 		SaveNodePath.get_node("Save" + str(number)).get_node("SaveText/StatsContainer/Level").text = "Level " + str(data["Level"])
 		SaveNodePath.get_node("Save" + str(number)).get_node("SaveText/StatsContainer/Health").text = "Health " + str(data["Health"])
 		SaveNodePath.get_node("Save" + str(number)).get_node("SaveText/StatsContainer/Ammo").text = "Ammo " + str(data["Ammo"])
+		
+		SaveNodePath.get_node("Save" + str(number)).get_node("ItemsContainer/WeaponsContainer/PistolIcon").self_modulate.a = int(data["Weapons"][0])
+		SaveNodePath.get_node("Save" + str(number)).get_node("ItemsContainer/WeaponsContainer/UzisIcon").self_modulate.a = int(data["Weapons"][1])
+		SaveNodePath.get_node("Save" + str(number)).get_node("ItemsContainer/WeaponsContainer/ShotgunIcon").self_modulate.a = int(data["Weapons"][2])
 
 #main menu buttons
 func _on_PlayButton_pressed():
@@ -60,11 +64,11 @@ func _on_PlayBackButton_pressed():
 
 
 func _on_Delete1Button_pressed():
-	Game.Save(Game.default_data, 1)
+	GameManager.Save(GameManager.default_data, 1)
 	ReloadMenuData()
 
 func _on_Load1Button_pressed():
-	Game.StartGame(Game.Load(1), 1)
+	GameManager.StartGame(1)
 
 
 

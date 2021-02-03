@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Art Assets/Enemies/finjanortnite_gun.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/PistolEnemy.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 40.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 80.0
 
 [node name="PistolEnemy" type="KinematicBody2D"]
 z_index = 1
@@ -21,3 +24,10 @@ texture = ExtResource( 1 )
 position = Vector2( 0, 6.32221 )
 enabled = true
 cast_to = Vector2( 3000, 0 )
+
+[node name="SenseArea" type="Area2D" parent="."]
+
+[node name="SenseCollider" type="CollisionShape2D" parent="SenseArea"]
+shape = SubResource( 2 )
+[connection signal="body_entered" from="SenseArea" to="." method="_on_SenseArea_body_entered"]
+[connection signal="body_exited" from="SenseArea" to="." method="_on_SenseArea_body_exited"]
